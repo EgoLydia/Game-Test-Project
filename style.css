@@ -1,6 +1,85 @@
 body,
 html {
+body {
+  position: relative;
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  background-color: #bcf2ea;
+  background-image: url("./dolphin3.png"), url("./dolphin3.png");
+  background-position-x: 10px, 40px;
+  background-position-y: 10px, 40px;
+  background-size: 48px, 48px;
+  z-index: -10;
+  opacity: 0.3;
+}
+img {
+  width: 10%;
+}
+
+ul,
+li {
+  list-style: none;
+  cursor: pointer;
+}
+
+.answers:hover {
+  background-color: #47d4d3;
+}
+li:hover .circle {
+  background-color: #1e637c;
+}
+.answers {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  color: #1e637c;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.content,
+.login-page,
+.category-page {
+  padding-top: 50px;
+}
+
+.question {
+  color: #1e637c;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: #f4fefd;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.circle span {
+  color: #1e637c;
+  margin: 0;
+}
+
+li:hover .circle span {
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+.progress_bar {
+  background-color: #47d4d3;
+  border-radius: 0;
+  height: 16px;
 }
