@@ -37,6 +37,11 @@ li {
 li:hover .circle {
   background-color: #1e637c;
 }
+.login-wrapper {
+  padding: 100px 30px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 .answers {
   padding: 20px;
   border-radius: 20px;
@@ -82,4 +87,23 @@ li:hover .circle span {
   background-color: #47d4d3;
   border-radius: 0;
   height: 16px;
+}
+h3,
+h4,
+label,
+p {
+  color: #1e637c;
+}
+
+.login-btn,
+.play-btn {
+  background-color: #1e637c;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+input {
+  border: none;
+  outline: none;
+  background-color: #f0fefc;
 }
