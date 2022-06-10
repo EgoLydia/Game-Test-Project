@@ -42,6 +42,12 @@ li:hover .circle {
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.category-wrapper {
+  padding: 30px 10px;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 .answers {
   padding: 20px;
   border-radius: 20px;
@@ -95,6 +101,10 @@ p {
   color: #1e637c;
 }
 
+.levels:hover label {
+  cursor: pointer;
+}
+
 .login-btn,
 .play-btn {
   background-color: #1e637c;
@@ -106,4 +116,12 @@ input {
   border: none;
   outline: none;
   background-color: #f0fefc;
+}
+
+.radio-bg {
+  background-color: #f0fefc;
+}
+
+.cat input {
+  display: none;
 }
