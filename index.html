@@ -19,35 +19,35 @@
   </head>
   <body>
     <div class="bg"></div>
-    <div class="login-page container">
+    <div class="login-page hidden container">
       <div class="login-wrapper bg-white wrapper">
         <h3 class="text-center mb-5">Welcome Back!</h3>
         <div class="mb-4">
           <label for="username" class="mb-2">Username</label><br />
           <input
             type="text"
-            class="w-100 p-2"
+            class="w-100 p-2 username"
             placeholder="Enter your username"
           />
         </div>
         <button class="w-100 py-2 mb-5 login-btn text-white">Login</button>
       </div>
     </div>
-    <div class="container hidden category-page">
+    <div class="container category-page">
       <div class="bg-white category-wrapper">
         <h4 class="text-center mb-5">Set Up Your Trivia</h4>
         <p class="ms-5 fw-bold">Select Difficulty</p>
         <div class="d-flex mb-5 justify-content-center">
-          <div class="p-2 radio-bg me-5 levels">
-            <input type="radio" id="easy" name="level" />
+          <div class="p-2 radio-bg me-5 levels-wrapper">
+            <input type="radio" id="easy" class="levels" name="level" />
             <label for="easy">Simple</label>
           </div>
-          <div class="p-2 radio-bg me-5 levels">
-            <input type="radio" id="medium" name="level" />
+          <div class="p-2 radio-bg me-5 levels-wrapper">
+            <input type="radio" id="medium" class="levels" name="level" />
             <label for="medium">Medium</label>
           </div>
-          <div class="p-2 radio-bg levels">
-            <input type="radio" id="hard" name="level" />
+          <div class="p-2 radio-bg levels-wrapper">
+            <input type="radio" id="hard" class="levels" name="level" />
             <label for="hard">Complex</label>
           </div>
         </div>
@@ -56,22 +56,42 @@
           <div
             class="d-flex categories align-items-center mb-3 mt-3 justify-content-center"
           >
-            <div class="radio-bg me-3 py-2 px-1">
-              <input type="radio" id="g-knowlegde" name="category" />
+            <div class="radio-bg me-2 py-2 px-1">
+              <input
+                type="radio"
+                id="g-knowlegde"
+                name="category"
+                class="category"
+              />
               <label for="g-knowlegde" class="text-center"
                 >General Knowledge</label
               >
             </div>
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="sports" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input
+                type="radio"
+                id="sports"
+                name="category"
+                class="category"
+              />
               <label for="sports">Sports</label>
             </div>
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="celebrities" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input
+                type="radio"
+                id="celebrities"
+                name="category"
+                class="category"
+              />
               <label for="celebrities">Celebrities</label>
             </div>
             <div class="radio-bg py-2 px-1">
-              <input type="radio" id="animals" name="category" />
+              <input
+                type="radio"
+                id="animals"
+                name="category"
+                class="category"
+              />
               <label for="animals">Animals</label>
             </div>
           </div>
@@ -79,17 +99,22 @@
             class="d-flex categories align-items-center mb-3 justify-content-center"
           >
             <div class="radio-bg me-2 p-2">
-              <input type="radio" id="music" name="category" />
+              <input type="radio" id="music" name="category" class="category" />
               <label for="music" class="text-center"
                 >Entertainment: Music</label
               >
             </div>
             <div class="radio-bg me-2 p-2">
-              <input type="radio" id="film" name="category" />
+              <input type="radio" id="film" name="category" class="category" />
               <label for="film" class="text-center">Entertainment: Film</label>
             </div>
             <div class="radio-bg p-2">
-              <input type="radio" id="science" name="category" />
+              <input
+                type="radio"
+                id="science"
+                name="category"
+                class="category"
+              />
               <label for="science" class="text-center"
                 >Science and Nature</label
               >
@@ -98,44 +123,54 @@
           <div
             class="d-flex categories align-items-center mb-3 justify-content-center"
           >
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="maths" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input type="radio" id="maths" name="category" class="category" />
               <label for="maths">Mathematics</label>
             </div>
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="cartoon" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input
+                type="radio"
+                id="cartoon"
+                name="category"
+                class="category"
+              />
               <label for="cartoon" class="text-center"
                 >Cartoon and Animations</label
               >
             </div>
             <div class="radio-bg p-2">
-              <input type="radio" id="history" name="category" />
+              <input
+                type="radio"
+                id="history"
+                name="category"
+                class="category"
+              />
               <label for="history">History</label>
             </div>
           </div>
           <div
             class="d-flex categories align-items-center mb-3 justify-content-center"
           >
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="geo" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input type="radio" id="geo" name="category" class="category" />
               <label for="geo">Geography</label>
             </div>
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="video" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input type="radio" id="video" name="category" class="category" />
               <label for="video" class="text-center"
                 >Entertainment: Video Games</label
               >
             </div>
-            <div class="radio-bg p-2 me-3">
-              <input type="radio" id="arts" name="category" />
+            <div class="radio-bg p-2 me-2">
+              <input type="radio" id="arts" name="category" class="category" />
               <label for="arts">Arts</label>
             </div>
             <div class="radio-bg p-2">
-              <input type="radio" id="myth" name="category" />
+              <input type="radio" id="myth" name="category" class="category" />
               <label for="myth">Mythology</label>
             </div>
           </div>
-          <button class="w-100 mt-5 py-2 start-btn text-white">Start</button>
+          <button class="w-100 mt-lg-5 py-2 start-btn text-white">Start</button>
         </div>
       </div>
     </div>

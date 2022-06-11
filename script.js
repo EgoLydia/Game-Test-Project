@@ -18,6 +18,9 @@ exitLeaderPage.addEventListener("click", exitLeaderBoard);
 openLeaderPage.addEventListener("click", openLeaderBoard);
 
 let currentUser = undefined;
+let selectedLevel = "";
+let selectedCategory = "";
+
 function login() {
   const userName = userNameInput.value.toLowerCase();
   if (userName === "") {
@@ -35,6 +38,28 @@ function login() {
   }
   currentUser = user;
   openTriviaSetup();
+}
+
+let checkLevel = document.querySelectorAll(".levels");
+for (let i = 0; i < checkLevel.length; i++) {
+  checkLevel[i].onchange = (e) => {
+    const parent = checkLevel[i].parentNode;
+    if (e.target.checked) {
+      selectedLevel = parent.children[1].innerText;
+      console.log(selectedLevel);
+    }
+  };
+}
+
+let checkCategory = document.querySelectorAll(".category");
+for (let i = 0; i < checkCategory.length; i++) {
+  checkCategory[i].onchange = (e) => {
+    const parent = checkCategory[i].parentNode;
+    if (e.target.checked) {
+      selectedCategory = parent.children[1].innerText;
+      console.log(selectedCategory);
+    }
+  };
 }
 
 function openTriviaSetup() {

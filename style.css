@@ -75,10 +75,13 @@ li:hover .circle {
 
 .content,
 .login-page,
-.category-page,
 .result-page,
 .leader-board-page {
   padding-top: 50px;
+}
+
+.category-page {
+  padding-top: 20px;
 }
 
 .leader-strip {
@@ -125,7 +128,7 @@ p {
   color: #1e637c;
 }
 
-.levels:hover label {
+.levels-wrapper:hover label {
   cursor: pointer;
 }
 
