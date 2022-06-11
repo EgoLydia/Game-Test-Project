@@ -11,7 +11,9 @@ const openLeaderPage = document.querySelector(".leaderBoard-btn");
 const leaderBoard = document.querySelector(".leader-board-page ");
 let userNameInput = document.querySelector(".username");
 let categoryDisplay = document.querySelector(".categories");
-let spinner = document.querySelector(".spinner-border");
+let spinner = document.querySelector(".spin1");
+let spinner2 = document.querySelector(".spin2");
+
 console.log(spinner);
 
 loginBtn.addEventListener("click", login);
@@ -60,13 +62,14 @@ function startTrivia() {
   if (selectedLevel === "" || selectedCategory === {}) {
     alert("Complete actions");
   } else {
-    openTrivia();
+    fetchQuestions();
   }
 }
 
 async function fetchCategories() {
   const response = await fetch("https://opentdb.com/api_category.php");
   const result = await response.json();
+  console.log(result);
   if (result) {
     spinner.classList.remove("spinner-border");
   }
@@ -103,6 +106,29 @@ function addEventToCategories() {
       }
     };
   }
+}
+
+async function fetchQuestions() {
+  spinner2.classList.add("spinner-border");
+  startBtn.classList.add("hidden");
+  const response = await fetch(
+    "https://opentdb.com/api.php?amount=10" +
+      "&category=" +
+      selectedCategory.id +
+      "&difficulty=" +
+      selectedLevel.toLowerCase() +
+      "&type=multiple"
+  );
+  console.log(response);
+  const res = await response.json();
+  console.log(res);
+  questions = res.results;
+  if (questions.length > 0) {
+    openTrivia();
+  } else {
+    alert("Sorry there are no questions in this level and category");
+  }
+  console.log(questions);
 }
 
 function openTriviaSetup() {
