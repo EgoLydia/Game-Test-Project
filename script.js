@@ -13,12 +13,13 @@ let userNameInput = document.querySelector(".username");
 let categoryDisplay = document.querySelector(".categories");
 let spinner = document.querySelector(".spin1");
 let spinner2 = document.querySelector(".spin2");
-
-console.log(spinner);
+let questNumber = document.querySelector(".quest-number");
+let question = document.querySelector(".question");
+let allOptions = document.querySelectorAll(".options");
 
 loginBtn.addEventListener("click", login);
 startBtn.addEventListener("click", startTrivia);
-nextBtn.addEventListener("click", finish);
+nextBtn.addEventListener("click", nextQuestion);
 exitLeaderPage.addEventListener("click", exitLeaderBoard);
 openLeaderPage.addEventListener("click", openLeaderBoard);
 
@@ -27,6 +28,7 @@ let selectedLevel = "";
 let selectedCategory = {};
 let questions = [];
 let categories = [];
+let count = 0;
 
 function login() {
   const userName = userNameInput.value.toLowerCase();
@@ -119,16 +121,37 @@ async function fetchQuestions() {
       selectedLevel.toLowerCase() +
       "&type=multiple"
   );
-  console.log(response);
   const res = await response.json();
-  console.log(res);
+  if (res) {
+    startBtn.classList.remove("hidden");
+    spinner2.classList.remove("spinner-border");
+  }
   questions = res.results;
   if (questions.length > 0) {
     openTrivia();
+    nextQuestion();
   } else {
     alert("Sorry there are no questions in this level and category");
   }
   console.log(questions);
+}
+
+function nextQuestion() {
+  if (count === questions.length) {
+    finish();
+    return;
+  }
+  let currentQuestion = questions[count];
+  let options = currentQuestion.incorrect_answers;
+  let index = Math.floor(Math.random() * 4);
+  options.splice(index, 0, currentQuestion.correct_answer);
+  questNumber.innerHTML = ` Question ${count + 1}/10`;
+  question.innerHTML = `${currentQuestion.question.toUpperCase()}`;
+  for (let i = 0; i < options.length; i++) {
+    allOptions[i].children[1].innerText = options[i];
+  }
+  console.log(options);
+  count++;
 }
 
 function openTriviaSetup() {

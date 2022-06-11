@@ -44,11 +44,11 @@ li {
   cursor: pointer;
 }
 
-.answers:hover {
+.answers label:hover {
   background-color: #47d4d3;
   color: #fff;
 }
-li:hover .circle {
+.answers:hover .circle {
   background-color: #1e637c;
 }
 
@@ -63,13 +63,15 @@ li:hover .circle {
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.answers {
+.answers label {
   padding: 20px;
   border-radius: 20px;
   background-color: #fff;
   margin-bottom: 10px;
   color: #1e637c;
+  width: 100%;
   font-weight: 400;
+  cursor: pointer;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -108,7 +110,7 @@ li:hover .circle {
   margin: 0;
 }
 
-li:hover .circle span {
+.answers:hover .circle span {
   color: #fff;
 }
 
@@ -179,9 +181,29 @@ input {
 .categories {
   flex-wrap: wrap;
 }
-/* .cat input {
+.cat input {
   display: none;
-} */
+}
+
+.cat label:hover {
+  background-color: #d4fef8;
+}
+
+.answers input[type="radio"]:checked ~ label {
+  background-color: #47d4d3;
+  color: #fff;
+}
+
+.answers input[type="radio"] {
+  opacity: 0;
+}
+
+.answers input[type="radio"]:checked ~ span {
+  color: #fff;
+}
+.answers input[type="radio"]:checked ~ circle {
+  background-color: #1e637c;
+}
 
 .scroll {
   overflow: auto;

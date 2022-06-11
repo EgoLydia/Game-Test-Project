@@ -75,11 +75,8 @@
     <div class="content-page hidden">
       <div class="progres-bar"></div>
       <div class="container content">
-        <p class="text-center mb-3 fw-bold">Question 1/10</p>
-        <p class="question text-center mb-5 fw-bold">
-          HAVE YOU PRACTICED SPORT OR ANY PHYSICAL ACTIVITY OUT OF YOUR WORKING
-          HOURS AT LEAST 30 MIN OR MORE DURING THE LAST MONTH?
-        </p>
+        <p class="text-center quest-number mb-3 fw-bold"></p>
+        <p class="question text-center mb-5 fw-bold"></p>
         <div class="position-relative">
           <img
             class="orange img"
@@ -107,36 +104,72 @@
             src="assets/banna-removebg-preview.png"
             alt=""
           />
-          <ul class="p-0">
-            <li class="answers d-flex align-items-center">
+          <div class="answers d-flex">
+            <input
+              type="radio"
+              id="answer1"
+              class="answer"
+              name="answer"
+              
+            />
+            <label for="answer1" class="d-flex options align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>A</span>
               </div>
-              3 times or more per week
-            </li>
-            <li class="answers d-flex align-items-center">
+               <p class="m-0">3 times or more per week </p>
+              </label>
+          </div>
+          <div class="answers d-flex">
+            <input
+              type="radio"
+              id="answer2"
+              class="answer"
+              name="answer"
+              
+            />
+            <label for="answer2" class="d-flex options align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>B</span>
               </div>
-              1 or times per week
-            </li>
-            <li class="answers d-flex align-items-center">
+              <p class="m-0">3 times or more per week </p>
+              </label>
+          </div>
+          <div class="answers d-flex">
+            <input
+              type="radio"
+              id="answer3"
+              class="answer"
+              name="answer"
+              
+            />
+            <label for="answer3" class="d-flex options align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>C</span>
               </div>
-              Less than 4 times per month
-            </li>
-            <li class="answers d-flex align-items-center">
+              <p class="m-0">3 times or more per week </p>
+            </label>
+          </div>
+          <div class="answers d-flex">
+            <input
+              type="radio"
+              id="answer4"
+              class="answer"
+              name="answer"
+              
+            />
+            <label for="answer4" class="d-flex options align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>D</span>
               </div>
-              I dont practice sport during the month
-            </li>
-          </ul>
-        </div>
+              <p class="m-0">3 times or more per week </p>
+            </label>
+          </div>
+      </div>
         <div class="d-flex justify-content-end mt-4">
-          <button class="next-btn text-white">Next</button>
+          <button class="next-btn  text-white">Next</button>
         </div>
+        </div>
+
       </div>
     </div>
     <div class="container hidden result-page">
