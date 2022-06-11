@@ -10,16 +10,21 @@ const exitLeaderPage = document.querySelector(".exit-btn");
 const openLeaderPage = document.querySelector(".leaderBoard-btn");
 const leaderBoard = document.querySelector(".leader-board-page ");
 let userNameInput = document.querySelector(".username");
+let categoryDisplay = document.querySelector(".categories");
+let spinner = document.querySelector(".spinner-border");
+console.log(spinner);
 
 loginBtn.addEventListener("click", login);
-startBtn.addEventListener("click", openTrivia);
+startBtn.addEventListener("click", startTrivia);
 nextBtn.addEventListener("click", finish);
 exitLeaderPage.addEventListener("click", exitLeaderBoard);
 openLeaderPage.addEventListener("click", openLeaderBoard);
 
 let currentUser = undefined;
 let selectedLevel = "";
-let selectedCategory = "";
+let selectedCategory = {};
+let questions = [];
+let categories = [];
 
 function login() {
   const userName = userNameInput.value.toLowerCase();
@@ -51,15 +56,53 @@ for (let i = 0; i < checkLevel.length; i++) {
   };
 }
 
-let checkCategory = document.querySelectorAll(".category");
-for (let i = 0; i < checkCategory.length; i++) {
-  checkCategory[i].onchange = (e) => {
-    const parent = checkCategory[i].parentNode;
-    if (e.target.checked) {
-      selectedCategory = parent.children[1].innerText;
-      console.log(selectedCategory);
-    }
-  };
+function startTrivia() {
+  if (selectedLevel === "" || selectedCategory === {}) {
+    alert("Complete actions");
+  } else {
+    openTrivia();
+  }
+}
+
+async function fetchCategories() {
+  const response = await fetch("https://opentdb.com/api_category.php");
+  const result = await response.json();
+  if (result) {
+    spinner.classList.remove("spinner-border");
+  }
+  categories = result.trivia_categories;
+  categories.forEach((trivia_categories) => {
+    categoryDisplay.innerHTML += `
+      <div class="radio-bg me-2 mb-2 py-2 px-1">
+        <input
+          type="radio"
+          id="${trivia_categories.id}"
+          name="category"
+          class="category"
+        />
+        <label for="${trivia_categories.id}" class="text-center"
+          >${trivia_categories.name}</label
+        >
+      </div>
+`;
+  });
+  addEventToCategories();
+}
+
+fetchCategories();
+
+function addEventToCategories() {
+  let checkCategory = document.querySelectorAll(".category");
+  for (let i = 0; i < checkCategory.length; i++) {
+    checkCategory[i].onchange = (e) => {
+      const parent = checkCategory[i].parentNode;
+      if (e.target.checked) {
+        selectedCategory.name = parent.children[1].innerText;
+        selectedCategory.id = parent.children[1].getAttribute("for");
+        console.log(selectedCategory);
+      }
+    };
+  }
 }
 
 function openTriviaSetup() {
