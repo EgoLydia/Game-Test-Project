@@ -1,7 +1,8 @@
-body,
-html {
 body {
   position: relative;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 .bg {
@@ -10,19 +11,31 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
   background-color: #bcf2ea;
-  background-image: url("./dolphin3.png"), url("./dolphin3.png");
+  background-image: url("assets/dolphin3.png"), url("./dolphin3.png");
   background-position-x: 10px, 40px;
   background-position-y: 10px, 40px;
   background-size: 48px, 48px;
   z-index: -10;
   opacity: 0.3;
 }
-img {
-  width: 10%;
+.img {
+  width: 150px;
+  position: absolute;
+  z-index: -5;
+  display: none;
+}
+
+.flower {
+  bottom: -130px;
+  left: -20px;
+}
+
+.orange {
+  top: -30px;
+  right: -50px;
+  width: 100px;
 }
 
 ul,
@@ -33,10 +46,12 @@ li {
 
 .answers:hover {
   background-color: #47d4d3;
+  color: #fff;
 }
 li:hover .circle {
   background-color: #1e637c;
 }
+
 .login-wrapper {
   padding: 100px 30px;
   border-radius: 10px;
@@ -54,13 +69,21 @@ li:hover .circle {
   background-color: #fff;
   margin-bottom: 10px;
   color: #1e637c;
+  font-weight: 400;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .content,
 .login-page,
-.category-page {
+.category-page,
+.result-page,
+.leader-board-page {
   padding-top: 50px;
+}
+
+.leader-strip {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
 }
 
 .question {
@@ -89,11 +112,12 @@ li:hover .circle span {
 .hidden {
   display: none;
 }
-.progress_bar {
+.progres-bar {
   background-color: #47d4d3;
   border-radius: 0;
   height: 16px;
 }
+
 h3,
 h4,
 label,
@@ -105,13 +129,40 @@ p {
   cursor: pointer;
 }
 
+.radio-bg:hover label {
+  cursor: pointer;
+}
+
 .login-btn,
-.play-btn {
+.start-btn,
+.leaderBoard-btn,
+.play-again,
+.go-back,
+.next-btn,
+.exit-btn {
   background-color: #1e637c;
-  border: none;
   padding: 5px 10px;
   border-radius: 20px;
 }
+button {
+  border: none;
+}
+
+.login-btn:hover,
+.start-btn:hover,
+.play-again:hover,
+.go-back:hover,
+.leaderBoard-btn:hover,
+.next-btn:hover,
+.exit-btn:hover {
+  background-color: #287794;
+}
+
+.next-btn,
+.exit-btn {
+  padding: 10px 30px;
+}
+
 input {
   border: none;
   outline: none;
@@ -124,4 +175,75 @@ input {
 
 .cat input {
   display: none;
+}
+/* 70e2da,f4fefd,47d4d3,7a9598, */
+
+@media (min-width: 768px) {
+  .content,
+  .login-page,
+  .category-page,
+  .result-page,
+  .leader-board-page {
+    max-width: 600px;
+  }
+  .shoe,
+  .flower,
+  .basket,
+  .orange,
+  .bicycle {
+    display: block;
+  }
+
+  .flower {
+    left: -80px;
+  }
+
+  .orange {
+    top: -40px;
+    right: -77px;
+    width: 100px;
+  }
+  .basket {
+    left: -150px;
+    top: -100px;
+  }
+  .bicycle {
+    bottom: -50px;
+    right: -100px;
+  }
+  .shoe {
+    top: 130px;
+    left: -150px;
+  }
+}
+@media (min-width: 992px) and (min-width: 1200px) {
+  .content,
+  .login-page,
+  .result-page,
+  .leader-board-page {
+    max-width: 600px;
+    padding-top: 100px;
+  }
+
+  .shoe {
+    top: 80px;
+    left: -250px;
+  }
+
+  .bicycle {
+    bottom: -60px;
+    right: -175px;
+    width: 200px;
+  }
+
+  .basket {
+    top: -100px;
+    left: -200px;
+  }
+
+  .banana {
+    display: block;
+    top: -70px;
+    right: -250px;
+  }
 }

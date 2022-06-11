@@ -135,39 +135,117 @@
               <label for="myth">Mythology</label>
             </div>
           </div>
-          <button class="w-100 mt-5 py-2 play-btn text-white">Start</button>
+          <button class="w-100 mt-5 py-2 start-btn text-white">Start</button>
         </div>
       </div>
     </div>
-    <div class="hidden">
-      <div class="progress_bar"></div>
+    <div class="content-page hidden">
+      <div class="progres-bar"></div>
       <div class="container content">
-        <p class="text-center mb-3">Question 1/10</p>
-        <p class="question text-center mb-5">
+        <p class="text-center mb-3 fw-bold">Question 1/10</p>
+        <p class="question text-center mb-5 fw-bold">
           HAVE YOU PRACTICED SPORT OR ANY PHYSICAL ACTIVITY OUT OF YOUR WORKING
           HOURS AT LEAST 30 MIN OR MORE DURING THE LAST MONTH?
         </p>
-        <ul class="p-0">
-          <li class="answers d-flex align-items-center">
-            <div class="me-2 text-white text-center circle">
-              <span>A</span>
-            </div>
-            3 times or more per week
-          </li>
-          <li class="answers d-flex align-items-center">
-            <div class="me-2 text-white text-center circle"><span>B</span></div>
-            1 or times per week
-          </li>
-          <li class="answers d-flex align-items-center">
-            <div class="me-2 text-white text-center circle"><span>C</span></div>
-            Less than 4 times per month
-          </li>
-          <li class="answers d-flex align-items-center">
-            <div class="me-2 text-white text-center circle"><span>D</span></div>
-            I dont practice sport during the month
-          </li>
-        </ul>
-        <div class="d-flex justify-content-end">
+        <div class="position-relative">
+          <img
+            class="orange img"
+            src="assets/orange-removebg-preview.png"
+            alt=""
+          />
+          <img
+            class="bicycle img"
+            src="assets/bicy-removebg-preview.png"
+            alt=""
+          />
+          <img
+            class="flower img"
+            src="assets/flower-removebg-preview.png"
+            alt=""
+          />
+          <img class="shoe img" src="assets/shoe-removebg-preview.png" alt="" />
+          <img
+            class="basket img"
+            src="assets/basket-removebg-preview.png"
+            alt=""
+          />
+          <img
+            class="banana img"
+            src="assets/banna-removebg-preview.png"
+            alt=""
+          />
+          <ul class="p-0">
+            <li class="answers d-flex align-items-center">
+              <div class="me-2 text-white text-center circle">
+                <span>A</span>
+              </div>
+              3 times or more per week
+            </li>
+            <li class="answers d-flex align-items-center">
+              <div class="me-2 text-white text-center circle">
+                <span>B</span>
+              </div>
+              1 or times per week
+            </li>
+            <li class="answers d-flex align-items-center">
+              <div class="me-2 text-white text-center circle">
+                <span>C</span>
+              </div>
+              Less than 4 times per month
+            </li>
+            <li class="answers d-flex align-items-center">
+              <div class="me-2 text-white text-center circle">
+                <span>D</span>
+              </div>
+              I dont practice sport during the month
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
           <button class="next-btn text-white">Next</button>
         </div>
+      </div>
+    </div>
+    <div class="container hidden result-page">
+      <div class="d-flex justify-content-end">
+        <button
+          class="leaderBoard-btn text-white mb-5 d-flex align-items-center"
+        >
+          <img src="./assets/trophy-fill.svg" class="me-2" alt="" /> Leader
+          Board
+        </button>
+      </div>
+      <div class="text-center mb-5">
+        <h3 class="mt-5 mb-3">Score: 65</h3>
+        <h3>Highscore: 90</h3>
+      </div>
+      <div class="d-flex flex-column">
+        <button class="play-again text-white p-2 mb-3">Play Again</button>
+        <button class="go-back text-white p-2">Return to home</button>
+      </div>
+    </div>
+    <div class="leader-board-page hidden container">
+      <h3 class="text-center mb-5">Top Scorers</h3>
+      <div
+        class="d-flex leader-strip p-3 bg-white mb-3 align-items-center justify-content-between"
+      >
+        <span class="d-flex">
+          <p class="mb-0 me-3">1.</p>
+          <i class="bi bi-person-square me-3"></i>
+          <p class="mb-0 me-3">Lydia</p>
+        </span>
+        <span class="d-flex">
+          <img src="/assets/trophy-fill.svg" alt="" />
+          <p class="mb-0 ms-3">80</p>
+        </span>
+      </div>
+      <button class="exit-btn text-white d-flex mx-auto mt-5">Exit</button>
+    </div>
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
