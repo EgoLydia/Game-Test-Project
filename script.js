@@ -1,4 +1,5 @@
 "use strict";
+
 const loginBtn = document.querySelector(".login-btn");
 const categoryPage = document.querySelector(".category-page");
 const loginPage = document.querySelector(".login-page");
@@ -15,11 +16,13 @@ let spinner = document.querySelector(".spin1");
 let spinner2 = document.querySelector(".spin2");
 let questNumber = document.querySelector(".quest-number");
 let question = document.querySelector(".question");
-let allOptions = document.querySelectorAll(".options");
+let allOptions = document.querySelectorAll(".answer");
+let uncheckOption = document.querySelectorAll(".options");
+let userScore = document.querySelector(".score");
 
 loginBtn.addEventListener("click", login);
 startBtn.addEventListener("click", startTrivia);
-nextBtn.addEventListener("click", nextQuestion);
+nextBtn.addEventListener("click", submit);
 exitLeaderPage.addEventListener("click", exitLeaderBoard);
 openLeaderPage.addEventListener("click", openLeaderBoard);
 
@@ -29,6 +32,9 @@ let selectedCategory = {};
 let questions = [];
 let categories = [];
 let count = 0;
+let currentQuestion = {};
+let selectedOption = "";
+let currentScore = 0;
 
 function login() {
   const userName = userNameInput.value.toLowerCase();
@@ -41,6 +47,7 @@ function login() {
   if (user === undefined) {
     user = {
       name: userName,
+      highScores: [],
     };
     console.log(JSON.stringify(user));
     localStorage.setItem(userName, JSON.stringify(user));
@@ -136,12 +143,29 @@ async function fetchQuestions() {
   console.log(questions);
 }
 
-function nextQuestion() {
-  if (count === questions.length) {
-    finish();
-    return;
+function selectOption() {
+  let checkedAnswer = document.querySelectorAll(".options");
+  for (let i = 0; i < checkedAnswer.length; i++) {
+    checkedAnswer[i].onchange = (e) => {
+      const parent = checkedAnswer[i].parentNode;
+      if (e.target.checked) {
+        selectedOption = parent.children[1].children[1].innerText;
+        console.log(selectedOption);
+      }
+    };
   }
-  let currentQuestion = questions[count];
+}
+selectOption();
+
+function submitAnswer() {
+  if (currentQuestion.correct_answer === selectedOption) currentScore++;
+  userScore.innerText = `Score: ${currentScore}`;
+  selectedOption = "";
+  console.log(currentScore);
+}
+
+function nextQuestion() {
+  currentQuestion = questions[count];
   let options = currentQuestion.incorrect_answers;
   let index = Math.floor(Math.random() * 4);
   options.splice(index, 0, currentQuestion.correct_answer);
@@ -152,6 +176,23 @@ function nextQuestion() {
   }
   console.log(options);
   count++;
+}
+
+function submit() {
+  if (selectedOption === "") {
+    alert("Please select an option");
+    return;
+  }
+  for (let i = 0; i < uncheckOption.length; i++) {
+    uncheckOption[i].checked = false;
+  }
+  submitAnswer();
+  if (count === questions.length) {
+    finish();
+    return;
+  }
+
+  nextQuestion();
 }
 
 function openTriviaSetup() {

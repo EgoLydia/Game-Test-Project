@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="bg"></div>
-    <div class="login-page hidden container">
+    <div class="login-page container">
       <div class="login-wrapper bg-white wrapper">
         <h3 class="text-center mb-5">Welcome Back!</h3>
         <div class="mb-4">
@@ -33,7 +33,7 @@
         <button class="w-100 py-2 mb-5 login-btn text-white">Login</button>
       </div>
     </div>
-    <div class="container category-page">
+    <div class="container hidden category-page">
       <div class="bg-white category-wrapper">
         <h4 class="text-center mb-5">Set Up Your Trivia</h4>
         <p class="ms-lg-5 fw-bold">Select Difficulty</p>
@@ -108,11 +108,11 @@
             <input
               type="radio"
               id="answer1"
-              class="answer"
-              name="answer"
+              class="options"
+              name="options"
               
             />
-            <label for="answer1" class="d-flex options align-items-center">
+            <label for="answer1" class="d-flex answer align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>A</span>
               </div>
@@ -123,11 +123,11 @@
             <input
               type="radio"
               id="answer2"
-              class="answer"
-              name="answer"
+              class="options"
+              name="options"
               
             />
-            <label for="answer2" class="d-flex options align-items-center">
+            <label for="answer2" class="d-flex answer align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>B</span>
               </div>
@@ -138,11 +138,11 @@
             <input
               type="radio"
               id="answer3"
-              class="answer"
-              name="answer"
+              class="options"
+              name="options"
               
             />
-            <label for="answer3" class="d-flex options align-items-center">
+            <label for="answer3" class="d-flex answer align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>C</span>
               </div>
@@ -153,11 +153,11 @@
             <input
               type="radio"
               id="answer4"
-              class="answer"
-              name="answer"
+              class="options"
+              name="options"
               
             />
-            <label for="answer4" class="d-flex options align-items-center">
+            <label for="answer4" class="d-flex answer align-items-center">
               <div class="me-2 text-white text-center circle">
                 <span>D</span>
               </div>
@@ -182,8 +182,8 @@
         </button>
       </div>
       <div class="text-center mb-5">
-        <h3 class="mt-5 mb-3">Score: 65</h3>
-        <h3>Highscore: 90</h3>
+        <h3 class="mt-5 mb-3 score">Score: 65</h3>
+        <h3 class="">Highscore: 90</h3>
       </div>
       <div class="d-flex flex-column">
         <button class="play-again text-white p-2 mb-3">Play Again</button>
