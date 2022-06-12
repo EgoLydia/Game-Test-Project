@@ -9,7 +9,7 @@ const nextBtn = document.querySelector(".next-btn");
 const resultPage = document.querySelector(".result-page");
 const exitLeaderPage = document.querySelector(".exit-btn");
 const openLeaderPage = document.querySelector(".leaderBoard-btn");
-const leaderBoard = document.querySelector(".leader-board-page ");
+const leaderBoardPage = document.querySelector(".leader-board-page ");
 let userNameInput = document.querySelector(".username");
 let categoryDisplay = document.querySelector(".categories");
 let spinner = document.querySelector(".spin1");
@@ -19,12 +19,14 @@ let question = document.querySelector(".question");
 let allOptions = document.querySelectorAll(".answer");
 let uncheckOption = document.querySelectorAll(".options");
 let userScore = document.querySelector(".score");
+let userHighScore = document.querySelector(".highscore");
+let leaderStrips = document.querySelector(".strips");
 
 loginBtn.addEventListener("click", login);
 startBtn.addEventListener("click", startTrivia);
 nextBtn.addEventListener("click", submit);
 exitLeaderPage.addEventListener("click", exitLeaderBoard);
-openLeaderPage.addEventListener("click", openLeaderBoard);
+openLeaderPage.addEventListener("click", viewLeaderBoard);
 
 let currentUser = undefined;
 let selectedLevel = "";
@@ -37,22 +39,21 @@ let selectedOption = "";
 let currentScore = 0;
 
 function login() {
-  const userName = userNameInput.value.toLowerCase();
+  let userName = userNameInput.value.toLowerCase();
   if (userName === "") {
     alert("Input Name");
     return;
   }
   let user = JSON.parse(localStorage.getItem(userName)) || undefined;
-  console.log(user);
   if (user === undefined) {
     user = {
       name: userName,
       highScores: [],
     };
-    console.log(JSON.stringify(user));
     localStorage.setItem(userName, JSON.stringify(user));
   }
   currentUser = user;
+
   openTriviaSetup();
 }
 
@@ -111,7 +112,6 @@ function addEventToCategories() {
       if (e.target.checked) {
         selectedCategory.name = parent.children[1].innerText;
         selectedCategory.id = parent.children[1].getAttribute("for");
-        console.log(selectedCategory);
       }
     };
   }
@@ -188,11 +188,103 @@ function submit() {
   }
   submitAnswer();
   if (count === questions.length) {
+    setHighestScore();
     finish();
     return;
   }
 
   nextQuestion();
+}
+
+function setHighestScore() {
+  let highestScore = 0;
+  if (currentUser.highScores.length === 0) {
+    currentUser.highScores.push({
+      level: selectedLevel,
+      category: selectedCategory.name,
+      score: currentScore,
+    });
+    highestScore = currentScore;
+  } else {
+    let index = currentUser.highScores.findIndex(
+      (x) => x.level === selectedLevel && x.category === selectedCategory.name
+    );
+    console.log("index", index);
+    if (index > -1) {
+      let highScore = currentUser.highScores[index];
+      if (highScore.score < currentScore) {
+        highScore.score = currentScore;
+        highestScore = currentScore;
+        currentUser.highScores.splice(index, 1, highScore);
+      } else {
+        userHighScore.innerText = `Highscore: ${highScore.score}`;
+      }
+    } else {
+      currentUser.highScores.push({
+        level: selectedLevel,
+        category: selectedCategory.name,
+        score: currentScore,
+      });
+      highestScore = currentScore;
+    }
+  }
+
+  if (highestScore === 0) return;
+
+  userHighScore.innerText = `Highscore: ${highestScore}`;
+  localStorage.setItem(
+    currentUser.name.toLowerCase(),
+    JSON.stringify(currentUser)
+  );
+
+  updateLeaderBoard(highestScore);
+}
+
+function updateLeaderBoard(highestScore) {
+  let key = `${selectedCategory.name} - ${selectedLevel}`;
+  let leaderBoard = JSON.parse(localStorage.getItem(key)) || [];
+  if (leaderBoard.length === 0) {
+    leaderBoard.push({
+      name: currentUser.name,
+      score: highestScore,
+    });
+  } else {
+    let index = leaderBoard.findIndex((x) => x.name === currentUser.name);
+    if (index > -1) {
+      let highScoreData = leaderBoard[index];
+      highScoreData.score = highestScore;
+      leaderBoard.splice(index, 1, highScoreData);
+    } else {
+      leaderBoard.push({
+        name: currentUser.name,
+        score: highestScore,
+      });
+    }
+  }
+  localStorage.setItem(key, JSON.stringify(leaderBoard));
+}
+
+function viewLeaderBoard() {
+  let key = `${selectedCategory.name} - ${selectedLevel}`;
+  let leaderBoard = JSON.parse(localStorage.getItem(key)) || [];
+  console.log(leaderBoard);
+  for (let i = 0; i < leaderBoard.length; i++) {
+    leaderStrips.innerHTML += `
+       <div
+          class="d-flex leader-strip p-3 bg-white mb-3 align-items-center justify-content-between"
+        ><span class="d-flex">
+          <p class="mb-0 me-3">${i + 1}</p>
+          <i class="bi bi-person-square me-3"></i>
+          <p class="mb-0 me-3">${leaderBoard[i].name}</p>
+        </span>
+        <span class="d-flex">
+          <img src="/assets/trophy-fill.svg" alt="" />
+          <p class="mb-0 ms-3">${leaderBoard[i].score}</p>
+        </span>
+        </div>
+`;
+  }
+  openLeaderBoard();
 }
 
 function openTriviaSetup() {
@@ -211,11 +303,11 @@ function finish() {
 }
 
 function exitLeaderBoard() {
-  leaderBoard.classList.add("hidden");
+  leaderBoardPage.classList.add("hidden");
   resultPage.classList.remove("hidden");
 }
 
 function openLeaderBoard() {
-  leaderBoard.classList.remove("hidden");
+  leaderBoardPage.classList.remove("hidden");
   resultPage.classList.add("hidden");
 }
