@@ -60,8 +60,8 @@ function login() {
   }
   currentUser = user;
 
-  openTriviaSetup();
   fetchCategories();
+  openTriviaSetup();
 }
 
 let checkLevel = document.querySelectorAll(".levels");
