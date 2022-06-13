@@ -44,6 +44,7 @@ let currentScore = 0;
 
 function login() {
   let userName = userNameInput.value.toLowerCase();
+
   if (userName === "") {
     alert("Input Name");
     return;
@@ -59,6 +60,7 @@ function login() {
   currentUser = user;
 
   openTriviaSetup();
+  fetchCategories();
 }
 
 let checkLevel = document.querySelectorAll(".levels");
@@ -88,14 +90,14 @@ async function fetchCategories() {
   categories = result.trivia_categories;
   categories.forEach((trivia_categories) => {
     categoryDisplay.innerHTML += `
-      <div class="radio-bg me-2 mb-2 py-2 px-1">
+      <div class="check">
         <input
           type="radio"
           id="${trivia_categories.id}"
-          name="category"
-          class="category"
+          name="category "
+          class="category d-none"
         />
-        <label for="${trivia_categories.id}" class="text-center"
+        <label for="${trivia_categories.id}" class="text-center radio-bg me-2 mb-2 py-2 px-1"
           >${trivia_categories.name}</label
         >
       </div>
@@ -103,8 +105,6 @@ async function fetchCategories() {
   });
   addEventToCategories();
 }
-
-fetchCategories();
 
 function addEventToCategories() {
   let checkCategory = document.querySelectorAll(".category");
@@ -123,7 +123,7 @@ async function fetchQuestions() {
   spinner2.classList.add("spinner-border");
   startBtn.classList.add("hidden");
   const response = await fetch(
-    "https://opentdb.com/api.php?amount=2" +
+    "https://opentdb.com/api.php?amount=10" +
       "&category=" +
       selectedCategory.id +
       "&difficulty=" +
@@ -297,6 +297,17 @@ function playAgain() {
   currentScore = 0;
 
   nextQuestion();
+}
+
+function goBackHome() {
+  resultPage.classList.add("hidden");
+  categoryPage.classList.remove("hidden");
+  questions = [];
+  categories = [];
+  currentQuestion = {};
+  selectedOption = "";
+  count = 0;
+  currentScore = 0;
 }
 
 function openTrivia() {
