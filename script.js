@@ -5,7 +5,7 @@ const categoryPage = document.querySelector(".category-page");
 const loginPage = document.querySelector(".login-page");
 const startBtn = document.querySelector(".start-btn");
 const contentPage = document.querySelector(".content-page");
-const nextBtn = document.querySelector(".next-btn");
+let nextBtn = document.querySelector(".next-btn");
 const resultPage = document.querySelector(".result-page");
 const exitLeaderPage = document.querySelector(".exit-btn");
 const openLeaderPage = document.querySelector(".leaderBoard-btn");
@@ -23,6 +23,7 @@ let userHighScore = document.querySelector(".highscore");
 let leaderStrips = document.querySelector(".strips");
 let playAgainBtn = document.querySelector(".play-again");
 let goHomeBtn = document.querySelector(".go-back");
+let progressBar = document.querySelector("#progress");
 
 loginBtn.addEventListener("click", login);
 startBtn.addEventListener("click", startTrivia);
@@ -164,16 +165,25 @@ function submitAnswer() {
 }
 
 function nextQuestion() {
+  updateProgressBar(count);
+
   currentQuestion = questions[count];
+  let questionLength = questions.length;
   let options = [...currentQuestion.incorrect_answers];
   let index = Math.floor(Math.random() * 4);
   options.splice(index, 0, currentQuestion.correct_answer);
-  questNumber.innerHTML = ` Question ${count + 1}/10`;
+  questNumber.innerHTML = ` Question ${count + 1}/${questionLength}`;
   question.innerHTML = `${currentQuestion.question.toUpperCase()}`;
   for (let i = 0; i < options.length; i++) {
     allOptions[i].children[1].innerText = options[i];
   }
   count++;
+}
+
+function updateProgressBar(count) {
+  let questionLength = questions.length;
+  let progressInPercent = (count / questionLength) * 100;
+  progressBar.style.width = `${progressInPercent}%`;
 }
 
 function submit() {
@@ -188,6 +198,7 @@ function submit() {
   if (count === questions.length) {
     setHighestScore();
     finish();
+    nextBtn.innerText = `Next`;
     return;
   }
 
