@@ -78,10 +78,11 @@ li {
 .result-page,
 .leader-board-page {
   padding-top: 70px;
+  padding-bottom: 70px;
 }
 
 .category-page {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .leader-strip {
