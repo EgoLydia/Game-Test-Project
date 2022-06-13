@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 body {
   position: relative;
   overflow-x: hidden;
   padding: 0;
   margin: 0;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
 }
 
 .bg {
@@ -43,15 +49,6 @@ li {
   list-style: none;
   cursor: pointer;
 }
-
-.answers label:hover {
-  background-color: #47d4d3;
-  color: #fff;
-}
-
-/* .answers:hover .circle {
-  background-color: #1e637c;
-} */
 
 .login-wrapper {
   padding: 100px 30px;
@@ -108,12 +105,19 @@ li {
 
 .circle span {
   color: #1e637c;
+  font-weight: 600;
   margin: 0;
 }
-
-/* .answers:hover .circle span {
+.answers label:hover {
+  background-color: #47d4d3;
   color: #fff;
-} */
+}
+
+.answers input[type="radio"]:checked ~ label {
+  background-color: #47d4d3;
+  color: #fff;
+  border-radius: 20px;
+}
 
 .hidden {
   display: none;
@@ -194,19 +198,6 @@ input {
   cursor: pointer;
 }
 
-.answers input[type="radio"]:checked ~ label {
-  background-color: #47d4d3;
-  color: #fff;
-  border-radius: 20px;
-}
-
-.answers input[type="radio"] {
-  display: none;
-}
-
-/* .answers input[type="radio"]:checked ~ span {
-  color: #fff;
-} */
 .check input[type="radio"]:checked ~ label {
   background-color: #1e637c;
   color: #fff;
@@ -217,6 +208,29 @@ input {
   overflow: auto;
   width: 100%;
   height: 300px;
+}
+
+.result-page {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.confetti {
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  transform-origin: top;
+  animation: confetti 20s ease infinite;
+}
+
+@keyframes confetti {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 120%);
+  }
 }
 
 @media (min-width: 768px) {

@@ -47,7 +47,7 @@ function login() {
   let userName = userNameInput.value.toLowerCase();
 
   if (userName === "") {
-    alert("Input Name");
+    alert("Please enter a name");
     return;
   }
   let user = JSON.parse(localStorage.getItem(userName)) || undefined;
