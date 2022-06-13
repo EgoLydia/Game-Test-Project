@@ -21,12 +21,16 @@ let uncheckOption = document.querySelectorAll(".options");
 let userScore = document.querySelector(".score");
 let userHighScore = document.querySelector(".highscore");
 let leaderStrips = document.querySelector(".strips");
+let playAgainBtn = document.querySelector(".play-again");
+let goHomeBtn = document.querySelector(".go-back");
 
 loginBtn.addEventListener("click", login);
 startBtn.addEventListener("click", startTrivia);
 nextBtn.addEventListener("click", submit);
 exitLeaderPage.addEventListener("click", exitLeaderBoard);
 openLeaderPage.addEventListener("click", viewLeaderBoard);
+playAgainBtn.addEventListener("click", playAgain);
+goHomeBtn.addEventListener("click", goBackHome);
 
 let currentUser = undefined;
 let selectedLevel = "";
@@ -63,7 +67,6 @@ for (let i = 0; i < checkLevel.length; i++) {
     const parent = checkLevel[i].parentNode;
     if (e.target.checked) {
       selectedLevel = parent.children[1].innerText;
-      console.log(selectedLevel);
     }
   };
 }
@@ -79,7 +82,6 @@ function startTrivia() {
 async function fetchCategories() {
   const response = await fetch("https://opentdb.com/api_category.php");
   const result = await response.json();
-  console.log(result);
   if (result) {
     spinner.classList.remove("spinner-border");
   }
@@ -121,7 +123,7 @@ async function fetchQuestions() {
   spinner2.classList.add("spinner-border");
   startBtn.classList.add("hidden");
   const response = await fetch(
-    "https://opentdb.com/api.php?amount=10" +
+    "https://opentdb.com/api.php?amount=2" +
       "&category=" +
       selectedCategory.id +
       "&difficulty=" +
@@ -140,7 +142,6 @@ async function fetchQuestions() {
   } else {
     alert("Sorry there are no questions in this level and category");
   }
-  console.log(questions);
 }
 
 function selectOption() {
@@ -150,7 +151,6 @@ function selectOption() {
       const parent = checkedAnswer[i].parentNode;
       if (e.target.checked) {
         selectedOption = parent.children[1].children[1].innerText;
-        console.log(selectedOption);
       }
     };
   }
@@ -161,12 +161,11 @@ function submitAnswer() {
   if (currentQuestion.correct_answer === selectedOption) currentScore++;
   userScore.innerText = `Score: ${currentScore}`;
   selectedOption = "";
-  console.log(currentScore);
 }
 
 function nextQuestion() {
   currentQuestion = questions[count];
-  let options = currentQuestion.incorrect_answers;
+  let options = [...currentQuestion.incorrect_answers];
   let index = Math.floor(Math.random() * 4);
   options.splice(index, 0, currentQuestion.correct_answer);
   questNumber.innerHTML = ` Question ${count + 1}/10`;
@@ -174,7 +173,6 @@ function nextQuestion() {
   for (let i = 0; i < options.length; i++) {
     allOptions[i].children[1].innerText = options[i];
   }
-  console.log(options);
   count++;
 }
 
@@ -265,9 +263,9 @@ function updateLeaderBoard(highestScore) {
 }
 
 function viewLeaderBoard() {
+  leaderStrips.innerHTML = "";
   let key = `${selectedCategory.name} - ${selectedLevel}`;
   let leaderBoard = JSON.parse(localStorage.getItem(key)) || [];
-  console.log(leaderBoard);
   for (let i = 0; i < leaderBoard.length; i++) {
     leaderStrips.innerHTML += `
        <div
@@ -290,6 +288,15 @@ function viewLeaderBoard() {
 function openTriviaSetup() {
   categoryPage.classList.remove("hidden");
   loginPage.classList.add("hidden");
+}
+
+function playAgain() {
+  resultPage.classList.add("hidden");
+  contentPage.classList.remove("hidden");
+  count = 0;
+  currentScore = 0;
+
+  nextQuestion();
 }
 
 function openTrivia() {

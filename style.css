@@ -48,9 +48,10 @@ li {
   background-color: #47d4d3;
   color: #fff;
 }
-.answers:hover .circle {
+
+/* .answers:hover .circle {
   background-color: #1e637c;
-}
+} */
 
 .login-wrapper {
   padding: 100px 30px;
@@ -110,9 +111,9 @@ li {
   margin: 0;
 }
 
-.answers:hover .circle span {
+/* .answers:hover .circle span {
   color: #fff;
-}
+} */
 
 .hidden {
   display: none;
@@ -181,9 +182,6 @@ input {
 .categories {
   flex-wrap: wrap;
 }
-.cat input {
-  display: none;
-}
 
 .cat label:hover {
   background-color: #d4fef8;
@@ -198,12 +196,12 @@ input {
   opacity: 0;
 }
 
-.answers input[type="radio"]:checked ~ span {
+/* .answers input[type="radio"]:checked ~ span {
   color: #fff;
 }
 .answers input[type="radio"]:checked ~ circle {
   background-color: #1e637c;
-}
+} */
 
 .scroll {
   overflow: auto;
