@@ -203,6 +203,10 @@ function submit() {
   }
 
   nextQuestion();
+  if (count === questions.length) {
+    nextBtn.innerText = `Finish`;
+    console.log(nextBtn.innerText);
+  }
 }
 
 function setHighestScore() {
