@@ -26,6 +26,16 @@ body {
   z-index: -10;
   opacity: 0.3;
 }
+hr:not([size]) {
+  height: 5px;
+  margin-top: 220px;
+  margin-bottom: 50px !important;
+}
+
+.answer-wrap {
+  margin-top: 50px;
+}
+
 .img {
   width: 150px;
   position: absolute;
@@ -92,7 +102,7 @@ li {
 
 .question {
   color: #1e637c;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
 }
 

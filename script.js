@@ -5,6 +5,7 @@ const categoryPage = document.querySelector(".category-page");
 const loginPage = document.querySelector(".login-page");
 const startBtn = document.querySelector(".start-btn");
 const contentPage = document.querySelector(".content-page");
+const rule = document.querySelector(".rule");
 let nextBtn = document.querySelector(".next-btn");
 const resultPage = document.querySelector(".result-page");
 const exitLeaderPage = document.querySelector(".exit-btn");
@@ -308,6 +309,7 @@ function openTriviaSetup() {
 function playAgain() {
   resultPage.classList.add("hidden");
   contentPage.classList.remove("hidden");
+  rule.classList.remove("hidden");
   count = 0;
   currentScore = 0;
 
@@ -326,11 +328,13 @@ function goBackHome() {
 }
 
 function openTrivia() {
+  rule.classList.remove("hidden");
   categoryPage.classList.add("hidden");
   contentPage.classList.remove("hidden");
 }
 
 function finish() {
+  rule.classList.add("hidden");
   contentPage.classList.add("hidden");
   resultPage.classList.remove("hidden");
 }
