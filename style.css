@@ -26,14 +26,10 @@ body {
   z-index: -10;
   opacity: 0.3;
 }
-hr:not([size]) {
-  height: 5px;
-  margin-top: 220px;
-  margin-bottom: 50px !important;
-}
 
-.answer-wrap {
-  margin-top: 50px;
+hr:not([size]) {
+  height: 3px;
+  margin-top: 240px;
 }
 
 .img {
@@ -71,6 +67,7 @@ li {
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 .answers label {
   padding: 20px;
   border-radius: 20px;
@@ -141,6 +138,7 @@ li {
 .hidden {
   display: none;
 }
+
 .progress {
   border-radius: 0;
 }
@@ -179,6 +177,7 @@ p {
   padding: 5px 10px;
   border-radius: 20px;
 }
+
 button {
   border: none;
 }
@@ -260,6 +259,7 @@ input {
   .leader-board-page {
     max-width: 600px;
   }
+
   .shoe,
   .flower,
   .basket,
@@ -277,14 +277,17 @@ input {
     right: -77px;
     width: 100px;
   }
+
   .basket {
     left: -150px;
     top: -100px;
   }
+
   .bicycle {
     bottom: -50px;
     right: -100px;
   }
+
   .shoe {
     top: 130px;
     left: -150px;
