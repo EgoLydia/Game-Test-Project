@@ -14,15 +14,15 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
     />
-    
+
     <link rel="stylesheet" href="style.css" />
     <title>Trivia Game App</title>
   </head>
   <body>
     <div class="bg">
-      <hr class=" rule hidden position-relative">
+      <hr class="rule hidden position-relative" />
     </div>
-    
+
     <div class="login-page container">
       <div class="login-wrapper bg-white wrapper">
         <h3 class="text-center mb-5 fw-bold">Welcome Back!</h3>
@@ -42,17 +42,22 @@
         <h4 class="text-center mb-5 fw-bold">Set Up Your Trivia</h4>
         <p class="ms-lg-5 fw-bold">Select Difficulty</p>
         <div class="d-flex mb-5 justify-content-evenly">
-          <div class=" levels-wrapper">
+          <div class="levels-wrapper">
             <input type="radio" id="easy" class="levels d-none" name="level" />
-            <label for="easy" class="p-2 radio-bg mb-1 ">Simple</label>
+            <label for="easy" class="p-2 radio-bg mb-1">Simple</label>
           </div>
           <div class="levels-wrapper">
-            <input type="radio" id="medium" class="levels d-none" name="level" />
-            <label for="medium" class="p-2 radio-bg  mb-1 ">Medium</label>
+            <input
+              type="radio"
+              id="medium"
+              class="levels d-none"
+              name="level"
+            />
+            <label for="medium" class="p-2 radio-bg mb-1">Medium</label>
           </div>
-          <div class=" levels-wrapper">
+          <div class="levels-wrapper">
             <input type="radio" id="hard" class="levels d-none" name="level" />
-            <label for="hard" class="p-2 radio-bg mb-1 ">Complex</label>
+            <label for="hard" class="p-2 radio-bg mb-1">Complex</label>
           </div>
         </div>
         <div class="cat">
@@ -76,15 +81,19 @@
         </div>
       </div>
     </div>
-    <div class="content-page hidden ">
+    <div class="content-page hidden">
       <div class="progress">
-        <div class="progress-bar" id="progress" role="progressbar" style="width: 0%"></div>
+        <div
+          class="progress-bar"
+          id="progress"
+          role="progressbar"
+          style="width: 0%"
+        ></div>
       </div>
 
       <div class="container content">
         <p class="text-center quest-number mb-3 fw-bold">uuu</p>
-        <p class="question text-center fw-bold"> olores acc non voluptate est necessitatibus molestias atque? hic qu
-      e </p>
+        <p class="question text-center fw-bold"></p>
         <div class="position-relative answer-wrap">
           <img
             class="orange img"
@@ -118,14 +127,11 @@
               id="answer1"
               class="options d-none"
               name="options"
-              
             />
             <label for="answer1" class="d-flex answer align-items-center">
-              <div class="me-2 text-center circle">
-                A
-              </div>
-               <p class="m-0">3 times or more per week </p>
-              </label>
+              <div class="me-2 text-center circle">A</div>
+              <p class="m-0"></p>
+            </label>
           </div>
           <div class="answers d-flex">
             <input
@@ -133,14 +139,11 @@
               id="answer2"
               class="options d-none"
               name="options"
-              
             />
             <label for="answer2" class="d-flex answer align-items-center">
-              <div class="me-2 text-center circle">
-                B
-              </div>
-              <p class="m-0">3 times or more per week </p>
-              </label>
+              <div class="me-2 text-center circle">B</div>
+              <p class="m-0"></p>
+            </label>
           </div>
           <div class="answers d-flex">
             <input
@@ -148,13 +151,10 @@
               id="answer3"
               class="options d-none"
               name="options"
-              
             />
             <label for="answer3" class="d-flex answer align-items-center">
-              <div class="me-2 text-center circle">
-                C
-              </div>
-              <p class="m-0">3 times or more per week </p>
+              <div class="me-2 text-center circle">C</div>
+              <p class="m-0"></p>
             </label>
           </div>
           <div class="answers d-flex">
@@ -163,26 +163,21 @@
               id="answer4"
               class="options d-none"
               name="options"
-              
             />
             <label for="answer4" class="d-flex answer align-items-center">
-              <div class="me-2 text-center circle">
-                D
-              </div>
-              <p class="m-0">3 times or more per week </p>
+              <div class="me-2 text-center circle">D</div>
+              <p class="m-0"></p>
             </label>
           </div>
-      </div>
+        </div>
         <div class="d-flex justify-content-end mt-4">
-          <button class="next-btn  text-white">Next</button>
+          <button class="next-btn text-white">Next</button>
         </div>
-        </div>
-
       </div>
     </div>
     <div class="container hidden position-relative result-page">
       <div class="position-absolute confetti">
-        <img src="assets/confetti.png" class=" img-fluid" alt="">
+        <img src="assets/confetti.png" class="img-fluid" alt="" />
       </div>
 
       <div class="d-flex justify-content-end">
@@ -194,19 +189,17 @@
         </button>
       </div>
       <div class="text-center mb-5">
-        <h3 class="mt-5 mb-3 score">Score: 65</h3>
-        <h3 class="highscore">Highscore: 90</h3>
+        <h3 class="mt-5 mb-3 score"></h3>
+        <h3 class="highscore"></h3>
       </div>
       <div class="d-flex flex-column">
         <button class="play-again text-white p-2 mb-3">Play Again</button>
         <button class="go-back text-white p-2">Return to home</button>
       </div>
     </div>
-    <div class="leader-board-page hidden  container">
+    <div class="leader-board-page hidden container">
       <h3 class="text-center mb-5">Top Scorers</h3>
-      <div class="d-flex strips flex-column">
-      
-      </div>
+      <div class="d-flex strips flex-column"></div>
       <button class="exit-btn text-white d-flex mx-auto mt-5">Exit</button>
     </div>
     <script src="script.js"></script>
